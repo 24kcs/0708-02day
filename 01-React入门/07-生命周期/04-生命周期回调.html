@@ -18,13 +18,23 @@
 
     // 定义组件
     class Life extends React.Component{
+      constructor(props){
+        super(props)
+        console.log('constructor============================')
+      }
       // 状态数据
       state={
         opacity:1  
       }
+      componentWillMount(){
+        console.log('componentWillMount()==================组件渲染之前')
+      }
       // 内部应该有个定时器
       // 组件渲染界面后的生命周期回调函数
       componentDidMount() {
+
+        console.log('componentDidMount()========================组件渲染完毕')
+
         // 定时器
         this.timeId=setInterval(()=>{
           console.log('我还活着')
@@ -41,13 +51,20 @@
         }, 200);
        
       }
+
+      componentWillUpdate(){
+        console.log('componentWillUpdate()===========组件将要更新')
+      }
+      componentDidUpdate(){
+        console.log('componentDidUpdate()===========组件更新完毕了')
+      }
+
       // 组件卸载之前(挂了之前)·······
       componentWillUnmount() {
+        console.log('componentWillUnmount()==============组件卸载之前的回调')
         // 干掉定时器
         clearInterval(this.timeId)
       };
-      
-
       // 干掉组件
       unmount=()=>{
         // 如何干掉组件
@@ -55,6 +72,7 @@
       }
       
       render(){
+        console.log('render()===============================')
         const {opacity}=this.state
         return(
           <div>
